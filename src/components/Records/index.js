@@ -27,15 +27,15 @@ class Records extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiUrl = `http://localhost:3000/records`
+    const apiUrl = `https://authorization-apis.herokuapp.com/records`
     const options = {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
-      /*       console.log('respppp', fetchedData)
-       */ const updatedData = fetchedData.map(record => ({
+      console.log('respppp', fetchedData)
+      const updatedData = fetchedData.map(record => ({
         id: record.id,
         userId: record.user_id,
         body: record.body,

@@ -59,7 +59,7 @@ class Register extends Component {
       return
     }
     const userDetails = {username, password, name, location, gender}
-    const url = 'http://localhost:3000/register'
+    const url = 'https://authorization-apis.herokuapp.com/register'
     const options = {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-type': 'application/json'},

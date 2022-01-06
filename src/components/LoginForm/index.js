@@ -38,7 +38,7 @@ class LoginForm extends Component {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
-    const url = 'http://localhost:3000/login'
+    const url = 'https://authorization-apis.herokuapp.com/login'
     const options = {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-type': 'application/json'},
