@@ -8,6 +8,8 @@ import './index.css'
 class Home extends Component {
   state = {
     uploadedData: [],
+    validation: '',
+    submitted: false,
   }
 
   handleFiles = files => {
@@ -19,9 +21,17 @@ class Home extends Component {
     reader.readAsText(files[0])
   }
 
+  onSubmitSuccess = () => {
+    const {history} = this.props
+    history.replace('/records')
+  }
+
   handleSubmit = async e => {
     console.log('Form submitted')
     const {uploadedData} = this.state
+    if (uploadedData.length === 0) {
+      this.setState({validation: 'Please upload a file before submitting'})
+    }
     const url = 'http://localhost:3000/upload'
     const options = {
       method: 'POST',
@@ -29,17 +39,18 @@ class Home extends Component {
       body: uploadedData,
     }
     const response = await fetch(url, options)
-    console.log('res', response)
     const data = await response.json()
+    const {message} = data
+    this.setState({validation: message, submitted: true})
     if (response.ok === true) {
-      this.onSubmitSuccess(data)
+      this.onSubmitSuccess()
     } else {
       this.onSubmitFailure(data.error_msg)
     }
   }
 
   render() {
-    const {uploadedData} = this.state
+    const {uploadedData, validation, submitted} = this.state
     console.log('data', uploadedData)
     return (
       <div className="home-box1">
@@ -66,6 +77,8 @@ class Home extends Component {
             >
               Submit
             </button>
+            {submitted === true && <p style={{color: 'red'}}>{validation}</p>}
+            {validation && <p style={{color: 'red'}}>{validation}</p>}
           </div>
         </div>
       </div>

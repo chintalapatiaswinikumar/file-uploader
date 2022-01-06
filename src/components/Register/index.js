@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import './index.css'
 
 class Register extends Component {
@@ -48,6 +48,16 @@ class Register extends Component {
   submitForm = async event => {
     event.preventDefault()
     const {username, password, name, location, gender} = this.state
+    if (
+      username === '' ||
+      name === '' ||
+      password === '' ||
+      location === '' ||
+      gender === ''
+    ) {
+      this.setState({validation: 'Please enter mandatory details'})
+      return
+    }
     const userDetails = {username, password, name, location, gender}
     const url = 'http://localhost:3000/register'
     const options = {
@@ -71,7 +81,7 @@ class Register extends Component {
     return (
       <>
         <label className="input-label-password-reg" htmlFor="password">
-          PASSWORD
+          PASSWORD <span className="register-span">*</span>
         </label>
         <br />
         <input
@@ -90,7 +100,7 @@ class Register extends Component {
     return (
       <>
         <label className="input-label-name-reg" htmlFor="name">
-          NAME
+          NAME <span style={{color: 'red'}}>*</span>
         </label>
         <br />
         <input
@@ -109,7 +119,7 @@ class Register extends Component {
     return (
       <>
         <label className="input-label-gender-reg" htmlFor="gender">
-          GENDER
+          GENDER <span style={{color: 'red'}}>*</span>
         </label>
         <br />
         <input
@@ -128,7 +138,7 @@ class Register extends Component {
     return (
       <>
         <label className="input-label-location-reg" htmlFor="location">
-          LOCATION
+          LOCATION <span style={{color: 'red'}}>*</span>
         </label>
         <br />
         <input
@@ -147,7 +157,7 @@ class Register extends Component {
     return (
       <>
         <label className="input-label-user-reg" htmlFor="username">
-          USERNAME
+          USERNAME <span style={{color: 'red'}}>*</span>
         </label>
         <br />
         <input
@@ -162,7 +172,7 @@ class Register extends Component {
   }
 
   render() {
-    const {showSubmitError, errorMsg} = this.state
+    const {showSubmitError, errorMsg, validation} = this.state
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -182,7 +192,11 @@ class Register extends Component {
             <button type="submit" className="butt-reg">
               Register
             </button>
+            <Link to="/login">
+              <p className="login">Click here to login</p>
+            </Link>
             {showSubmitError && <p className="para2-login-reg">*{errorMsg}</p>}
+            {validation && <p className="para2-login-reg">{validation}</p>}
           </div>
         </form>
         <img

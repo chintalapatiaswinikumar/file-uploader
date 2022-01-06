@@ -107,6 +107,7 @@ class LoginForm extends Component {
               alt="website logo"
               className="logo"
             /> */}
+            <h1 className="head">File Uploader</h1>
             <h1 className="login-heading">Login</h1>
             <div>{this.renderUsernameField()}</div>
             <div>{this.renderPasswordField()}</div>
