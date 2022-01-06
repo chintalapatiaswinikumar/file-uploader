@@ -1,0 +1,14 @@
+.empty-list {
+  position: absolute;
+  left: 300px;
+  top: 500px;
+}
+
+.no-record {
+  position: absolute;
+  left: 550px;
+}
+
+.empty-head {
+  color: #f7931e;
+}

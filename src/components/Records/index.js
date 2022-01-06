@@ -54,17 +54,34 @@ class Records extends Component {
     return (
       <div>
         <Header />
-        <ul>
-          {recordsList.map(record => {
-            const {id, title, body} = record
-            return (
-              <li className="list" key={id}>
-                <h1>{title}</h1>
-                <p>{body}</p>
-              </li>
-            )
-          })}
-        </ul>
+        {recordsList.length > 0 ? (
+          <ul>
+            {recordsList.map(record => {
+              const {id, title, body} = record
+              return (
+                <li className="list" key={id}>
+                  <h1>{title}</h1>
+                  <p>{body}</p>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
+          <>
+            <div className="no-record">
+              <img
+                src="https://res.cloudinary.com/dx3zbikpn/image/upload/v1641481363/norecord_xhl52g.png"
+                alt="no records"
+              />
+            </div>
+            <div className="empty-list">
+              <h1 className="empty-head">
+                No Records found Please upload and submit a file to know its
+                records
+              </h1>
+            </div>
+          </>
+        )}
       </div>
     )
   }
