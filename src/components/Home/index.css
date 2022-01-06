@@ -1,0 +1,29 @@
+.home-box2 {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+}
+.home-img {
+  padding: 60px;
+}
+.butt-home {
+  position: absolute;
+  background-color: #f7931e;
+  border-radius: 8px;
+  border-width: 0px;
+  color: #ffffff;
+  width: 360px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.butt-submit {
+  background-color: #f7931e;
+  border-radius: 8px;
+  border-width: 0px;
+  color: #ffffff;
+  width: 360px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 50px;
+}
