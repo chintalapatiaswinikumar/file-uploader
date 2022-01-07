@@ -57,7 +57,7 @@ class Register extends Component {
       return
     }
     const userDetails = {username, password, name, location, gender}
-    const url = 'https://authorization-apis.herokuapp.com/register'
+    const url = 'https://file-uploader-api-111.herokuapp.com/register'
     const options = {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-type': 'application/json'},

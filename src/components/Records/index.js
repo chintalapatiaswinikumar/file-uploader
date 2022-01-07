@@ -25,7 +25,7 @@ class Records extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiUrl = `https://authorization-apis.herokuapp.com/records`
+    const apiUrl = `https://file-uploader-api-111.herokuapp.com/records`
     const options = {
       method: 'GET',
     }

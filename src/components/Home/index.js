@@ -30,7 +30,7 @@ class Home extends Component {
     if (uploadedData.length === 0) {
       this.setState({validation: 'Please upload a file before submitting'})
     }
-    const url = 'https://authorization-apis.herokuapp.com/upload'
+    const url = 'https://file-uploader-api-111.herokuapp.com/upload'
     const options = {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-type': 'application/json'},
