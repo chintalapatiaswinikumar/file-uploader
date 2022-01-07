@@ -30,7 +30,6 @@ class LoginForm extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
 
@@ -97,7 +96,6 @@ class LoginForm extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
-    console.log('bye')
     return (
       <div className="box1">
         <form onSubmit={this.submitForm}>

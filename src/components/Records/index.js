@@ -13,8 +13,6 @@ const apiStatusConstants = {
 class Records extends Component {
   state = {
     recordsList: [],
-    validation: '',
-    submitted: false,
     apiStatus: apiStatusConstants.initial,
   }
 
@@ -22,7 +20,7 @@ class Records extends Component {
     this.getRecords()
   }
 
-  getRecords = async e => {
+  getRecords = async () => {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
@@ -34,7 +32,6 @@ class Records extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
-      console.log('respppp', fetchedData)
       const updatedData = fetchedData.map(record => ({
         id: record.id,
         userId: record.user_id,
@@ -50,7 +47,6 @@ class Records extends Component {
 
   renderRecordsList() {
     const {recordsList} = this.state
-    console.log('Data', recordsList)
     return (
       <div>
         <Header />

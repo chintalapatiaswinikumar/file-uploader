@@ -36,12 +36,10 @@ class Register extends Component {
 
   onSubmitSuccess = () => {
     const {history} = this.props
-    console.log('in success history', history)
     history.replace('/login')
   }
 
   onSubmitFailure = errorMsg => {
-    console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
 
@@ -68,9 +66,7 @@ class Register extends Component {
     const response = await fetch(url, options)
     const data = await response.json()
     if (response.ok) {
-      console.log('ok calling function')
       this.onSubmitSuccess()
-      console.log('after function')
     } else {
       this.onSubmitFailure(data.error_msg)
     }
@@ -177,10 +173,8 @@ class Register extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
-    console.log('bye')
     return (
       <div className="box1">
-        {console.log('form')}
         <form onSubmit={this.submitForm}>
           <div className="form-reg">
             <div>{this.rendernameField()}</div>

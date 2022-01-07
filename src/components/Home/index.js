@@ -14,9 +14,8 @@ class Home extends Component {
 
   handleFiles = files => {
     const reader = new FileReader()
-    reader.onload = e => {
-      /*       console.log('result', reader.result)
-       */ this.setState({uploadedData: reader.result})
+    reader.onload = () => {
+      this.setState({uploadedData: reader.result})
     }
     reader.readAsText(files[0])
   }
@@ -26,8 +25,7 @@ class Home extends Component {
     history.replace('/records')
   }
 
-  handleSubmit = async e => {
-    console.log('Form submitted')
+  handleSubmit = async () => {
     const {uploadedData} = this.state
     if (uploadedData.length === 0) {
       this.setState({validation: 'Please upload a file before submitting'})
@@ -50,8 +48,7 @@ class Home extends Component {
   }
 
   render() {
-    const {uploadedData, validation, submitted} = this.state
-    console.log('data', uploadedData)
+    const {validation, submitted} = this.state
     return (
       <div className="home-box1">
         <Header />

@@ -12,13 +12,6 @@ const Header = props => {
   return (
     <nav className="nav-header">
       <div className="nav-content">
-        {/*  <Link to="/" className="header-heading">
-          <img
-            className="website-logo"
-            src="https://res.cloudinary.com/dx3zbikpn/image/upload/v1640957000/Frame_274logo_qzx5p5.png"
-            alt="website logo"
-          />
-        </Link> */}
         <ul className="nav-menu">
           <Link to="/" className="nav-link-text">
             <li>File uploader</li>
